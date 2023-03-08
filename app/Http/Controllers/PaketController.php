@@ -3,9 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\Paket;
+use App\Imports\PaketImport;
 use App\Http\Requests\StorePaketRequest;
 use App\Http\Requests\UpdatePaketRequest;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\PaketExport;
+use PhpOffice\PhpSpreadsheet\Calculation\Information\ExcelError;
 
 class PaketController extends Controller
 {
@@ -70,4 +74,14 @@ class PaketController extends Controller
         return redirect('paket')->with('success', 'Data Telah Dihapus');
 
     }
+    public function exportData(){
+        $date = date('Y-m-d');
+        return Excel::download(new PaketExport, $date.'_paket.xlsx');
+    }
+    public function importData(){
+        Excel::import (new PaketImport)->toCollection(request()->file('import'));
+
+        return redirect(request()->segment(1). '/paket')->with('success', 'Import Data Telah Berhasil');
+    }
+
 }

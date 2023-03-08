@@ -4,37 +4,26 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Create Data Paket</h5></h5>
+          <h5 class="modal-title" id="exampleModalLabel">Create Data Outlet</h5></h5>
           {{-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span></button> --}}
           <button type="button" class="close" aria-label="Close" data-bs-dismiss="modal">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
-            <form action="paket" method="POST">
+            <form action="outlet" method="POST">
                 @csrf
                 <div class="form-group">
-                  <label for="id_outlet">ID Outlet</label>
-                  <input  type="text" class="form-control" id="id_outlet" name="id_outlet">
-                </div>
-
-                <div class="form-group">
-                  <label for="exampleFormControlSelect1">Jenis</label>
-                  <select class="form-control" id="exampleFormControlSelect1">
-                    <option selected disabled>Pilih Paket Lu</option>
-                    <option value="selimut" id="selimut">Selimut</option>
-                    <option value="bed_cover" id="bed_cover">Bed Cover</option>
-                    <option value="kaos" id="kaos">Kaos</option>
-                    <option value="lain" id="lain">Lainnya</option>
-                  </select>
+                  <label for="nama">Nama</label>
+                  <input  type="text" class="form-control" id="nama" name="nama">
                 </div>
                 <div class="form-group">
-                  <label for="exampleFormControlTextarea1">Nama Paket</label>
-                  <input type="" class="form-control" id="exampleFormControlInput1" name="nama_paket">
+                  <label for="exampleFormControlTextarea1">Alamat</label>
+                  <input type="" class="form-control" id="alamat" name="alamat">
                 </div>
                 <div class="form-group">
-                    <label for="exampleFormControlTextarea1">Harga</label>
-                    <input type="" class="form-control" id="exampleFormControlInput1" name="harga">
+                    <label for="exampleFormControlTextarea1">Telpon</label>
+                    <input type="" class="form-control" id="tlp" name="tlp">
                   </div>
                   <button type="submit" class="btn btn-primary">Submit</button>
               </form>

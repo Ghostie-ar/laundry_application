@@ -7,7 +7,7 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1>Data Paket</h1>
+          <h1>Data Outlet</h1>
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
@@ -85,34 +85,32 @@
             <thead>
               <tr>
                 <th scope="col">No</th>
-                <th scope="col">ID Outlet</th>
-                <th scope="col">Jenis</th>
-                <th scope="col">Nama Paket</th>
-                <th scope="col">Harga</th>
+                <th scope="col">Nama</th>
+                <th scope="col">Alamat</th>
+                <th scope="col">Telpon</th>
+                <th scope="col">Aksi</th>
 
               </tr>
             </thead>
             <tbody>
-              @foreach ($pakets as $item)
+              @foreach ($outlets as $item)
                 <tr>
                   <td>{{ $i = (isset($i)?++$i:$i = 1) }}</td>
                   {{-- <td>{{ $item->id }}</td> --}}
-                  <td>{{ $item->id_outlet }}</td>
-                  <td>{{ $item->jenis }}</td>
-                  <td>{{ $item->nama_paket }}</td>
-                  <td>{{ $item->harga }}</td>
-                  <td >
+                  <td>{{ $item->nama }}</td>
+                  <td>{{ $item->alamat}}</td>
+                  <td>{{ $item->tlp }}</td>
+                  <td>
                     <button type="button" class="btn btn-edit" data-bs-toggle="modal" data-bs-target="#ModalButton"
                     data-mode="edit"
                     data-id="{{ $item->id }}"
-                    data-id_outlet="{{ $item->id_outlet }}"
-                    data-jenis="{{ $item->jenis }}"
-                    data-nama_paket="{{ $item->nama_paket }}"
-                    data-harga="{{ $item->harga }}"
+                    data-nama="{{ $item->nama }}"
+                    data-alamat="{{ $item->alamat }}"
+                    data-tlp="{{ $item->tlp }}"
                     >
                       <i class="fa fa-edit" style="color: blue"></i>
                     </button>
-                    <form action="{{ route('paket.destroy', $item->id) }}" style="display: inline" method="post">
+                    <form action="{{ route('outlet.destroy', $item->id) }}" style="display: inline" method="post">
                       @csrf
                       @method('DELETE')
                       <button type="button" class="btn btn-delete" title="delete"><i class="fa fa-trash" style="color: red"></i></button>
@@ -134,10 +132,10 @@
   </section>
     <!-- /.content -->
 @endsection
-@include('paket.modal.form')
+@include('outlet.modal.form')
 @push('scripts')
     <script>
-      $('#tbl-data_paket').DataTable();
+      $('#tbl-data_outlet').DataTable();
 
       $("#success-alert").fadeTo(2000,500).slideUp(500, function(){
         $("#success-alert").slideUp(500)
@@ -167,30 +165,27 @@
         console.log(btn.data('mode'))
         const mode = btn.data('mode')
         const id = btn.data('id')
-        const id_outlet = btn.data('id_outlet')
-        const jenis = btn.data('jenis')
-        const nama_paket = btn.data('nama_paket')
-        const harga = btn.data('harga')
+        const nama = btn.data('nama')
+        const alamat = btn.data('alamat')
+        const tlp = btn.data('tlp')
         const modal = $(this)
         if( mode === 'edit'){
-          modal.find('.modal-title').text('Edit data produk')
+          modal.find('.modal-title').text('Edit data outlet')
           modal.find('#id').val(id)
-          modal.find('#id_outlet').val(id_outlet)
-          modal.find('#jenis').val(jenis)
-          modal.find('#nama_paket').val(nama_paket)
-          modal.find('#harga').val(harga)
+          modal.find('#nama').val(nama)
+          modal.find('#alamat').val(alamat)
+          modal.find('#tlp').val(tlp)
 
-          modal.find('.modal-body form').attr('action', '{{ url("paket") }}/'+id)
+          modal.find('.modal-body form').attr('action', '{{ url("outlet") }}/'+id)
           modal.find('#method').html('@method("PATCH")')
         }else{
           modal.find('.modal-title').text('Input data barang')
           modal.find('#id').val('')
-          modal.find('#id_outlet').val('')
-          modal.find('#jenis').val('')
-          modal.find('#nama_paket').val('')
-          modal.find('#harga').val('')
+          modal.find('#nama').val('')
+          modal.find('#alamat').val('')
+          modal.find('#tlp').val('')
 
-          modal.find('.modal-body form').attr('action', '{{ url("paket") }}/')
+          modal.find('.modal-body form').attr('action', '{{ url("outlet") }}/')
         }
       })
     </script>
