@@ -91,6 +91,14 @@
               </p>
             </a>
           </li>
+          <li class="nav-item">
+            <a href="data-karyawan" class="nav-link">
+              <i class="nav-icon fa fa-database"></i>
+              <p>
+                Simulasi
+              </p>
+            </a>
+          </li>
 
 
 
