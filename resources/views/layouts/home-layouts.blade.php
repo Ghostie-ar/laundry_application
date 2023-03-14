@@ -99,6 +99,14 @@
               </p>
             </a>
           </li>
+          <li class="nav-item">
+            <a href="member" class="nav-link">
+              <i class="nav-icon fa fa-database"></i>
+              <p>
+                Member
+              </p>
+            </a>
+          </li>
 
 
 

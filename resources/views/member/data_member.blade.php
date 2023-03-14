@@ -7,7 +7,7 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1>Data Outlet</h1>
+          <h1>Data Paket</h1>
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
@@ -86,35 +86,36 @@
               <tr>
                 <th scope="col">No</th>
                 <th scope="col">Nama</th>
-                <th scope="col">Alamat</th>
-                <th scope="col">Telpon</th>
-                <th scope="col">Aksi</th>
+                <th scope="col">Text</th>
+                <th scope="col">Telpoon</th>
 
               </tr>
             </thead>
             <tbody>
-              @foreach ($outlets as $item)
+              @foreach ($members as $item)
                 <tr>
                   <td>{{ $i = (isset($i)?++$i:$i = 1) }}</td>
                   {{-- <td>{{ $item->id }}</td> --}}
                   <td>{{ $item->nama }}</td>
-                  <td>{{ $item->alamat}}</td>
+                  <td>{{ $item->text }}</td>
+                  <td>{{ $item->text_kelamin }}</td>
                   <td>{{ $item->tlp }}</td>
-                  <td>
+                  <td >
                     <button type="button" class="btn btn-edit" data-bs-toggle="modal" data-bs-target="#ModalButton"
                     data-mode="edit"
                     data-id="{{ $item->id }}"
                     data-nama="{{ $item->nama }}"
-                    data-alamat="{{ $item->alamat }}"
+                    data-text="{{ $item->text }}"
+                    data-text_kelamin="{{ $item->text_kelamin }}"
                     data-tlp="{{ $item->tlp }}"
                     >
                       <i class="fa fa-edit" style="color: blue"></i>
                     </button>
-                    <form action="{{ route('outlet.destroy', $item->id) }}" style="display: inline" method="post">
-                        @csrf
-                        @method('DELETE')
-                        <button type="button" class="btn btn-delete" title="delete"><i class="fa fa-trash" style="color: red"></i></button>
-                      </form>
+                    <form action="{{ route('member.destroy', $item->id) }}" style="display: inline" method="post">
+                      @csrf
+                      @method('DELETE')
+                      <button type="button" class="btn btn-delete" title="delete"><i class="fa fa-trash" style="color: red"></i></button>
+                    </form>
                   </td>
                 </tr>
               @endforeach
@@ -132,10 +133,10 @@
   </section>
     <!-- /.content -->
 @endsection
-@include('outlet.modal.form')
+@include('member.modal.form')
 @push('scripts')
     <script>
-      $('#tbl-data_outlet').DataTable();
+      $('#tbl-data_member').DataTable();
 
       $("#success-alert").fadeTo(2000,500).slideUp(500, function(){
         $("#success-alert").slideUp(500)
@@ -166,26 +167,29 @@
         const mode = btn.data('mode')
         const id = btn.data('id')
         const nama = btn.data('nama')
-        const alamat = btn.data('alamat')
+        const text = btn.data('text')
+        const jenis_kelamin = btn.data('jenis_kelamin')
         const tlp = btn.data('tlp')
         const modal = $(this)
         if( mode === 'edit'){
-          modal.find('.modal-title').text('Edit data outlet')
+          modal.find('.modal-title').text('Edit data produk')
           modal.find('#id').val(id)
           modal.find('#nama').val(nama)
-          modal.find('#alamat').val(alamat)
+          modal.find('#text').val(text)
+          modal.find('#jenis_kelamin').val(jenis_kelamin)
           modal.find('#tlp').val(tlp)
 
-          modal.find('.modal-body form').attr('action', '{{ url("outlet") }}/'+id)
+          modal.find('.modal-body form').attr('action', '{{ url("paket") }}/'+id)
           modal.find('#method').html('@method("PATCH")')
         }else{
           modal.find('.modal-title').text('Input data barang')
           modal.find('#id').val('')
           modal.find('#nama').val('')
-          modal.find('#alamat').val('')
+          modal.find('#text').val('')
+          modal.find('#jenis_kelamin').val('')
           modal.find('#tlp').val('')
 
-          modal.find('.modal-body form').attr('action', '{{ url("outlet") }}/')
+          modal.find('.modal-body form').attr('action', '{{ url("paket") }}/')
         }
       })
     </script>

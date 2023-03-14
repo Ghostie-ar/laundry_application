@@ -54,17 +54,17 @@ class OutletController extends Controller
      */
     public function update(UpdateOutletRequest $request, Outlet $outlet)
     {
-        $outlet->update($request->all());
-        return redirect('outlet')->with('success', 'Data Telah Diupdate');
+        outlet::create($request->all());
+        return redirect('outlet')->with('success', 'Data Telah Ditambahkan');
 
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Outlet $id)
+    public function destroy($id)
     {
-        outlet::where('id', $id)->delete();
+        outlet::find($id)->delete();
         return redirect('outlet')->with('success', 'Data Telah Dihapus');
     }
 }

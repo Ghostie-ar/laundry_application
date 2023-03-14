@@ -4,28 +4,37 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Create Data Outlet</h5></h5>
+          <h5 class="modal-title" id="exampleModalLabel">Create Data Paket</h5></h5>
           {{-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span></button> --}}
           <button type="button" class="close" aria-label="Close" data-bs-dismiss="modal">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
-            <form action="outlet" method="POST">
+            <form action="paket" method="POST">
                 @csrf
-                <div id="method"></div>
                 <div class="form-group">
                   <label for="nama">Nama</label>
                   <input  type="text" class="form-control" id="nama" name="nama">
                 </div>
                 <div class="form-group">
-                  <label for="exampleFormControlTextarea1">Alamat</label>
-                  <input type="" class="form-control" id="alamat" name="alamat">
+                    <label for="text">Text</label>
+                    <input  type="text" class="form-control" id="text" name="text">
+                  </div>
+
+                <div class="form-group">
+                  <label for="exampleFormControlSelect1">Jenis Kelamin</label>
+                  <select class="form-control" id="jenis">
+                    <option selected disabled>Pilih Jenis Kelamin</option>
+                    <option value="L" id="L">Laki-Laki</option>
+                    <option value="P" id="P">Perempuan</option>
+                    <option value="lain" id="lain">Lainnya</option>
+                  </select>
                 </div>
                 <div class="form-group">
-                    <label for="exampleFormControlTextarea1">Telpon</label>
-                    <input type="" class="form-control" id="tlp" name="tlp">
-                  </div>
+                  <label for="tlp">Telpon</label>
+                  <input type="" class="form-control" id="tlp" name="tlp">
+                </div>
                   <button type="submit" class="btn btn-primary">Submit</button>
               </form>
         </div>

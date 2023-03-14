@@ -20,7 +20,7 @@
 
                 <div class="form-group">
                   <label for="exampleFormControlSelect1">Jenis</label>
-                  <select class="form-control" id="exampleFormControlSelect1">
+                  <select class="form-control" id="jenis">
                     <option selected disabled>Pilih Paket Lu</option>
                     <option value="selimut" id="selimut">Selimut</option>
                     <option value="bed_cover" id="bed_cover">Bed Cover</option>
@@ -30,11 +30,11 @@
                 </div>
                 <div class="form-group">
                   <label for="exampleFormControlTextarea1">Nama Paket</label>
-                  <input type="" class="form-control" id="exampleFormControlInput1" name="nama_paket">
+                  <input type="" class="form-control" id="nama_paket" name="nama_paket">
                 </div>
                 <div class="form-group">
                     <label for="exampleFormControlTextarea1">Harga</label>
-                    <input type="" class="form-control" id="exampleFormControlInput1" name="harga">
+                    <input type="" class="form-control" id="harga" name="harga">
                   </div>
                   <button type="submit" class="btn btn-primary">Submit</button>
               </form>
